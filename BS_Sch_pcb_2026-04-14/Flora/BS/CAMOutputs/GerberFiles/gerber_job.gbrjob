@@ -1,0 +1,24 @@
+{
+    "Header": {
+        "Comment": "All values are metric (mm)",
+        "CreationDate": "2026-04-15T00:33:13Z",
+        "GenerationSoftware": {
+            "Application": "Fusion Electronics",
+            "Vendor": "Autodesk",
+            "Version": "9.7.0"
+        },
+        "Part": "Single"
+    },
+    "Overall": {
+        "BoardThickness": 1.6608,
+        "LayerNumber": 2,
+        "Name": {
+            "ProjectId": "Bullshit_Sch_pcb"
+        },
+        "Owner": "wmoorehead2004 wmoorehead2004 <wmoorehead2004@gmail.com>",
+        "Size": {
+            "X": 69.8,
+            "Y": 50
+        }
+    }
+}
