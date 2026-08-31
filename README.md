@@ -1,5 +1,7 @@
 # Liar's Bar: Tabletop Hardware Edition
 
+![Project Banner](Assets/Images/banner.jpg)
+
 An interactive, embedded implementation of the *Liar's Bar* revolver / Russian Roulette game mechanic built on Arduino. The project features randomized chamber states, dynamic LED indicator animations, synchronized audio cues via a DFPlayer Mini, real-time life tracking on a 7-segment display, and a dedicated 3D-printable square enclosure with heat-set threaded inserts.
 
 ---
@@ -24,17 +26,17 @@ An interactive, embedded implementation of the *Liar's Bar* revolver / Russian R
 ```
                            +-------------------+
                            |    Arduino Uno/   |
-                           |     Nano (MCU)    |
+                           |    Nano (MCU)     |
                            +---------+---------+
                                      |
       +---------------+--------------+--------------+---------------+
       |               |              |              |               |
 +-----+-----+   +-----+-----+  +-----+-----+  +-----+-----+   +-----+-----+
-|  TM1637   |   | DFPlayer  |  | 6x LED    |  | Fire      |  | Power     |
-| 7-Segment |   |   Mini    |  | Array     |  | Pushbutton|  | Rocker    |
-| (CLK/DIO) |   | (Software |  | (5G / 1R) |  | (Pullup)  |  | Switch    |
-|           |   |  Serial)  |  |           |  |           |  |           |
-+-----------+   +-----------+  +-----------+  +-----------+  +-----------+
+|  TM1637   |   | DFPlayer  |  | 6x LED    |  | Fire      |   | Power     |
+| 7-Segment |   |   Mini    |  | Array     |  | Pushbutton|   | Rocker    |
+| (CLK/DIO) |   | (Software |  | (5G / 1R) |  | (Pullup)  |   | Switch    |
+|           |   |  Serial)  |  |           |  |           |   |           |
++-----------+   +-----------+  +-----------+  +-----------+   +-----------+
 ```
 
 ### Pin Assignment Table
@@ -57,9 +59,31 @@ An interactive, embedded implementation of the *Liar's Bar* revolver / Russian R
 
 ---
 
+## Custom PCB Design
+
+A custom carrier PCB was designed in KiCad/EasyEDA to eliminate messy point-to-point breadboard wiring, consolidate the pullups and current-limiting resistors, and fit snugly inside the 3D-printed enclosure.
+
+| Schematic View | 3D Board Render |
+| :---: | :---: |
+| ![PCB Schematic](Assets/Images/schematic.png) | ![PCB 3D Render](Assets/Images/pcb.png) |
+
+### PCB Highlights & Specifications
+* **Form Factor:** Custom dual-layer FR-4 board (2-layer, 1.6mm thickness).
+* **Socketed Modules:** Direct female header sockets for the **Arduino Nano** and **DFPlayer Mini** to allow easy swapping and reprogramming.
+* **Onboard Power Conditioning:** 
+  * Integrated bypass capacitors across `VCC`/`GND` rails to prevent audio buzz/pops from the DFPlayer Mini amplifier.
+  * Dedicated JST-XH / screw-terminal power input header connected in series with the rocker switch line.
+* **Direct Panel Breakouts:** JST-XH connector pads for off-board panel-mounted components (TM1637 Display, Trigger Button, Speaker, and Power Switch).
+* **LED Array Layout:** Arranged radially on-board (or via ribbon header to the top lid) with integrated SMD/THT current-limiting resistors.
+
+> Gerber and drill files for PCB manufacturing are available in the [`Gerbers`](Gerbers) directory.
+
+---
+
 ## Bill of Materials (BOM)
 
 ### Electronics
+* 1x Custom Carrier PCB (or standard prototyping perfboard)
 * 1x Arduino Nano, Uno, or Pro Micro (ATmega328P based)
 * 1x DFPlayer Mini MP3 Module
 * 1x MicroSD Card (FAT32 formatted, 32GB max)
@@ -83,6 +107,8 @@ An interactive, embedded implementation of the *Liar's Bar* revolver / Russian R
 
 ## Enclosure Layout & Mechanical Details
 
+![Enclosure CAD Assembly](Assets/Images/cad.png)
+
 * **Front Panel:**
   * Rectangular cutout for the 4-digit TM1637 7-segment display.
   * Rectangular/round cutout for the main SPST rocker power switch.
@@ -94,17 +120,17 @@ An interactive, embedded implementation of the *Liar's Bar* revolver / Russian R
   * The top lid secures to the base using four countersunk M3 machine screws.
 
 ```
-       +------------------------------------+
-       |  (G1)    (G2)    (G3)    (G4)  (G5)|
-       |                                    |
-       |             [ TRIGGER ]            |  <-- TOP PANEL (Lid)
-       |                                    |
-       |                (R1)                |
-       +------------------------------------+
-       |   +--------------+                 |
-       |   | [8][8][8][8] |     [ POWER ]   |  <-- FRONT PANEL
-       |   +--------------+                 |
-       +------------------------------------+
+        +------------------------------------+
+        |  (G1)    (G2)    (G3)    (G4)  (G5)|
+        |                                    |
+        |             [ TRIGGER ]            |  <-- TOP PANEL (Lid)
+        |                                    |
+        |                (R1)                |
+        +------------------------------------+
+        |   +--------------+                 |
+        |   | [8][8][8][8] |     [ POWER ]   |  <-- FRONT PANEL
+        |   +--------------+                 |
+        +------------------------------------+
 ```
 
 ---
@@ -182,6 +208,10 @@ Install the following libraries via the Arduino IDE Library Manager (**Sketch â†
 
 ---
 
-## License
+## Finished Build Gallery
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+| Assembled Unit | Internal Hardware & PCB Fit |
+| :---: | :---: |
+| ![Finished Front View](Assets/Images/solo.jpg) | ![Internal Wiring Assembly](Assets/Images/internal_wiring.jpg) |
+
+---
