@@ -119,19 +119,6 @@ A custom carrier PCB was designed in KiCad/EasyEDA to eliminate messy point-to-p
   * Four internal corner bosses with pilot holes sized for M3 heat-set inserts.
   * The top lid secures to the base using four countersunk M3 machine screws.
 
-```
-        +------------------------------------+
-        |  (G1)    (G2)    (G3)    (G4)  (G5)|
-        |                                    |
-        |             [ TRIGGER ]            |  <-- TOP PANEL (Lid)
-        |                                    |
-        |                (R1)                |
-        +------------------------------------+
-        |   +--------------+                 |
-        |   | [8][8][8][8] |     [ POWER ]   |  <-- FRONT PANEL
-        |   +--------------+                 |
-        +------------------------------------+
-```
 
 ---
 
